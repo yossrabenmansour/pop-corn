@@ -3,11 +3,13 @@ import { useState } from "react";
 function StarRating({
   maxRating = 5,
   color = "#fcc419",
-  size = 30,
+  size = 40,
   className = "",
   messages = [],
+  defaultRating =0 ,
+  onSetRate 
 }) {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(defaultRating);
   const [temRating, setTemRating] = useState(0);
   const containerStyle = {
     display: "flex",
@@ -26,6 +28,7 @@ function StarRating({
   };
   function handleRating(rating) {
     setRating(rating);
+    onSetRate(rating)
   }
   return (
     <div style={containerStyle} className={className}>

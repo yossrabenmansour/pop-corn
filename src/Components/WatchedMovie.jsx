@@ -1,16 +1,17 @@
 
-function WatchedMovie({movie}) {
+function WatchedMovie({movie ,  onDeleteWatched}) {
+ 
     return (
         <div className="watched-card">
 
-          <img src={movie.Poster} alt={`${movie.Title} poster`} />  
+          <img src={movie.poster} alt={`${movie.title} poster`} />  
           
           <div className="watched-list-container">
-            <h2>{movie.Title}</h2>
+            <h2>{movie.title}</h2>
             <div className="watched-list">
          <p>
             <span>⭐</span>
-            <span>{movie.userRating}</span>
+            <span>{(movie.userRating)}</span>
          </p>
          <p>
             <span>⭐</span>
@@ -18,8 +19,9 @@ function WatchedMovie({movie}) {
          </p>
          <p>
             <span>⏳</span>
-            <span>{movie.runtime}</span>
+            <span>{movie.runtime} <strong>min</strong> </span>
          </p>
+         <button className="btn-delete" onClick={()=>onDeleteWatched(movie.imdbID)}>❌</button>
          </div>
          </div>
         </div>

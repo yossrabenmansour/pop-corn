@@ -95,6 +95,7 @@ nav{
   display: flex;
   align-items: center;
   padding: 20px;
+  cursor: pointer;
 }
 .movie-card-info{
   margin-left: 10px;
@@ -108,6 +109,7 @@ nav{
   box-shadow: 1px 1px 10px black;
   text-align: center;
   padding: 10px;
+  
 }
 .summary-info{
   display: flex;
@@ -116,9 +118,8 @@ nav{
 }
 .watched-card{
   display: flex;
-
   border-bottom: solid 1px;
- padding: 20px;
+  padding: 20px;
 }
 .watched-card img {
  height: 120px;
@@ -132,4 +133,80 @@ nav{
   display: flex;
    margin-top: 10px;
   justify-content: space-around;
+}
+
+/* //////////////Loader/////// */
+.loader , .err-msg{
+  margin-top: 300px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+/* //////////////////Movie Details  */
+.btn-back {
+  background: none;
+  border: none; 
+  font-size: 25px; 
+  font-weight: 500;
+  cursor: pointer; 
+  
+}
+.movie-details img {
+ height: 200px;
+ max-width: 40%;
+}
+header{
+  display: flex;
+  background-color: var(--color-background-100);
+}
+.details-overview{
+  padding: 20px 0px ;
+  text-align: center;
+margin-right: 10px;
+  margin-top: 15px;
+  width: 80%;
+}
+.details-overview h3 {
+  font-size: 25px ;
+}
+.footer-details{
+  margin-top: 40px ;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  
+}
+
+.plot{
+  margin-bottom: 20px;
+}
+.staring{
+  margin-bottom : 20px ; 
+}
+.rating{
+  border-radius: 10px;
+  width: 90%;
+  padding: 10px 30px 15px 10px ;
+  background-color: var(--color-background-100);
+ margin-bottom: 40px;
+
+}
+.btn-add-watched{
+  margin-top: 10px;
+  padding: 5px 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+
+.btn-delete{
+  background: none;
+  border: none;
+  cursor: pointer;
 }
