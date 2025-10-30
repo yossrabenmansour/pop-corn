@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import StarRating from "../StarRating";
 import Loader from "./Loader";
 const myKey = "18473d00";
@@ -8,14 +8,20 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [loading, setLoading] = useState(false);
   const [userRating, setUserRating] = useState("");
 
-  const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
+  const countRef = useRef(0);
 
+  useEffect(() => {
+    if (userRating) {
+      countRef.current++;
+    }
+  }, [userRating]);
+
+  const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
 
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
 
-  
   const {
     Title: title,
     Released: released,
@@ -35,13 +41,14 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       title,
       year,
       poster,
-      runtime: Number (runtime.split(" ").at(0)),
+      runtime: Number(runtime.split(" ").at(0)),
       imdbRating: Number(imdbRating),
       userRating,
+      userRatingDecision: countRef.current,
     };
     onAddWatched(newWatchedMovie);
     onCloseMovie();
-      }
+  }
 
   useEffect(
     function () {
@@ -53,9 +60,9 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       }
       document.addEventListener("keydown", callback);
 
-      return function (){
-        document.removeEventListener("keydown" , callback)
-      }
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
     },
     [onCloseMovie]
   );
@@ -70,7 +77,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
         );
         const data = await res.json();
         // console.log(data);
-        setMovie(data); 
+        setMovie(data);
         setLoading(false);
       }
       fetchMovieDetails();
